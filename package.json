@@ -1,6 +1,7 @@
 {
   "name": "astro-qiita-loader",
   "version": "0.0.1",
+  "description": "Qiita API Loader for Astro",
   "type": "module",
   "exports": {
     ".": "./index.ts"
@@ -10,12 +11,21 @@
     "index.ts"
   ],
   "keywords": [
-    "withastro"
+    "withastro",
+    "astro-loader",
+    "qiita"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t0yohei/astro-qiita-loader.git"
+  },
+  "homepage": "https://github.com/t0yohei/astro-qiita-loader.git",
+  "author": "t0yohei <k.t0yohei@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "astro": "^5.3.0"
   },
   "peerDependencies": {
-    "astro": "^4.0.0"
+    "astro": "^5.0.0"
   }
 }
