@@ -47,6 +47,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/netlify@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@astrojs/netlify@npm:6.2.0"
+  dependencies:
+    "@astrojs/internal-helpers": "npm:0.5.1"
+    "@astrojs/underscore-redirects": "npm:0.6.0"
+    "@netlify/blobs": "npm:^8.1.0"
+    "@netlify/functions": "npm:^2.8.0"
+    "@vercel/nft": "npm:^0.29.0"
+    esbuild: "npm:^0.24.0"
+    vite: "npm:^6.0.7"
+  peerDependencies:
+    astro: ^5.3.0
+  checksum: 10c0/934b896e410b9a8b5feb92e26e435a84ff3e8e3115efce12976e4387a1e2afa1c5466ee19975085b0a4581bbaec591fb47fb6f2c37d022335a06299fac477a6f
+  languageName: node
+  linkType: hard
+
 "@astrojs/prism@npm:3.2.0":
   version: 3.2.0
   resolution: "@astrojs/prism@npm:3.2.0"
@@ -68,6 +85,13 @@ __metadata:
     is-wsl: "npm:^3.1.0"
     which-pm-runs: "npm:^1.1.0"
   checksum: 10c0/5727205ca13fc9f83ff97b64838f6edd4010e8307d19f781f641c0c99e779d7d3e15469d66a67ba119c87963cd1c529bbd0f15bc8b88d88918f8fda04805c610
+  languageName: node
+  linkType: hard
+
+"@astrojs/underscore-redirects@npm:0.6.0":
+  version: 0.6.0
+  resolution: "@astrojs/underscore-redirects@npm:0.6.0"
+  checksum: 10c0/fe1895e3a6fa38b246bd9b793b203e590ee52fc426892802cfcd8e1d7d3ef181c919412f664de946ef940b6d0c758473c45997d0cb60cfaf3c95a5e086d1ad3e
   languageName: node
   linkType: hard
 
@@ -495,6 +519,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mapbox/node-pre-gyp@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@mapbox/node-pre-gyp@npm:2.0.0"
+  dependencies:
+    consola: "npm:^3.2.3"
+    detect-libc: "npm:^2.0.0"
+    https-proxy-agent: "npm:^7.0.5"
+    node-fetch: "npm:^2.6.7"
+    nopt: "npm:^8.0.0"
+    semver: "npm:^7.5.3"
+    tar: "npm:^7.4.0"
+  bin:
+    node-pre-gyp: bin/node-pre-gyp
+  checksum: 10c0/7d874c7f6f5560a87be7207f28d9a4e53b750085a82167608fd573aab8073645e95b3608f69e244df0e1d24e90a66525aeae708aba82ca73ff668ed0ab6abda6
+  languageName: node
+  linkType: hard
+
+"@netlify/blobs@npm:^8.1.0":
+  version: 8.1.1
+  resolution: "@netlify/blobs@npm:8.1.1"
+  checksum: 10c0/f0f6290ca9d4b5bcb3d8874dbea9c04669cc6585f029fea9d284c2f16a6f713aeff5f734c64ffd33edfc9b0c98b8198bd2470173719274432b3d6c95a4228f01
+  languageName: node
+  linkType: hard
+
+"@netlify/functions@npm:^2.8.0":
+  version: 2.8.2
+  resolution: "@netlify/functions@npm:2.8.2"
+  dependencies:
+    "@netlify/serverless-functions-api": "npm:1.26.1"
+  checksum: 10c0/f543259e68a04f73ff967924c2894d4099f083e83494a60e46478dd874d2d9b8d671751766899b6d99a09f9ea30309dd6b0ef025d6bc49604fb42e57e10e55ba
+  languageName: node
+  linkType: hard
+
+"@netlify/node-cookies@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@netlify/node-cookies@npm:0.1.0"
+  checksum: 10c0/5d8034d1fd581930e8100af4e5710b79cb3bb0a0b743c716d0d8a1c347aad767fa75130323f1aaee78080a026a4cafd4eef7d11953de01098a661d765a497b16
+  languageName: node
+  linkType: hard
+
+"@netlify/serverless-functions-api@npm:1.26.1":
+  version: 1.26.1
+  resolution: "@netlify/serverless-functions-api@npm:1.26.1"
+  dependencies:
+    "@netlify/node-cookies": "npm:^0.1.0"
+    urlpattern-polyfill: "npm:8.0.2"
+  checksum: 10c0/eb5bd829d4c557a66c5a39dde72faf96afa16eaa905d93066ef65248a9449721dbf038e9b83aeed329662bbdc6061e7b8e9e4cd3166da8d4fa774029bda804ef
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -558,7 +632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^5.1.4":
+"@rollup/pluginutils@npm:^5.1.3, @rollup/pluginutils@npm:^5.1.4":
   version: 5.1.4
   resolution: "@rollup/pluginutils@npm:5.1.4"
   dependencies:
@@ -848,6 +922,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/nft@npm:^0.29.0":
+  version: 0.29.2
+  resolution: "@vercel/nft@npm:0.29.2"
+  dependencies:
+    "@mapbox/node-pre-gyp": "npm:^2.0.0"
+    "@rollup/pluginutils": "npm:^5.1.3"
+    acorn: "npm:^8.6.0"
+    acorn-import-attributes: "npm:^1.9.5"
+    async-sema: "npm:^3.1.1"
+    bindings: "npm:^1.4.0"
+    estree-walker: "npm:2.0.2"
+    glob: "npm:^10.4.5"
+    graceful-fs: "npm:^4.2.9"
+    node-gyp-build: "npm:^4.2.2"
+    picomatch: "npm:^4.0.2"
+    resolve-from: "npm:^5.0.0"
+  bin:
+    nft: out/cli.js
+  checksum: 10c0/3f1e3d3d2565e6e4ac191fc4f9b9b9676959de82165d6ae789410c5c0df058802f2ff9221ac325857ddc1f11f30509c73e01c43f0a91b56371d595a2eab5205f
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^3.0.0":
   version: 3.0.0
   resolution: "abbrev@npm:3.0.0"
@@ -855,7 +951,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.14.0":
+"acorn-import-attributes@npm:^1.9.5":
+  version: 1.9.5
+  resolution: "acorn-import-attributes@npm:1.9.5"
+  peerDependencies:
+    acorn: ^8
+  checksum: 10c0/5926eaaead2326d5a86f322ff1b617b0f698aa61dc719a5baa0e9d955c9885cc71febac3fb5bacff71bbf2c4f9c12db2056883c68c53eb962c048b952e1e013d
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.14.0, acorn@npm:^8.6.0":
   version: 8.14.0
   resolution: "acorn@npm:8.14.0"
   bin:
@@ -952,10 +1057,10 @@ __metadata:
 
 "astro-qiita-loader@file:../::locator=demo%40workspace%3A.":
   version: 0.0.1
-  resolution: "astro-qiita-loader@file:../#../::hash=1e135a&locator=demo%40workspace%3A."
+  resolution: "astro-qiita-loader@file:../#../::hash=b386ea&locator=demo%40workspace%3A."
   peerDependencies:
     astro: ^5.0.0
-  checksum: 10c0/61ae8553f83503055def6bfbb79378f8614ebce6d718069bbf021e7a9126f9185508c3edaa1dbea7a362395c3c2e9872e210858e374cc2b80b59f0f23e0e6d30
+  checksum: 10c0/1bcc953184dd2086597e4fbb4f237d86e20c7849f5371220633c15112840fa5c28176849d6c4dc9837f5fdfa31a74a38ec7f489755dbee175382b25abbfd33d9
   languageName: node
   linkType: hard
 
@@ -1032,6 +1137,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async-sema@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "async-sema@npm:3.1.1"
+  checksum: 10c0/a16da9f7f2dbdd00a969bf264b7ad331b59df3eac2b38f529b881c5cc8662594e68ed096d927ec2aabdc13454379cdc6d677bcdb0a3d2db338fb4be17957832b
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^4.1.0":
   version: 4.1.0
   resolution: "axobject-query@npm:4.1.0"
@@ -1057,6 +1169,15 @@ __metadata:
   version: 1.0.0
   resolution: "base-64@npm:1.0.0"
   checksum: 10c0/d886cb3236cee0bed9f7075675748b59b32fad623ddb8ce1793c790306aa0f76a03238cad4b3fb398abda6527ce08a5588388533a4ccade0b97e82b9da660e28
+  languageName: node
+  linkType: hard
+
+"bindings@npm:^1.4.0":
+  version: 1.5.0
+  resolution: "bindings@npm:1.5.0"
+  dependencies:
+    file-uri-to-path: "npm:1.0.0"
+  checksum: 10c0/3dab2491b4bb24124252a91e656803eac24292473e56554e35bbfe3cc1875332cfa77600c3bac7564049dc95075bf6fcc63a4609920ff2d64d0fe405fcf0d4ba
   languageName: node
   linkType: hard
 
@@ -1243,6 +1364,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"consola@npm:^3.2.3":
+  version: 3.4.0
+  resolution: "consola@npm:3.4.0"
+  checksum: 10c0/bc7f7ad46514375109a80f3ae8330097eb1e5d89232a24eb830f3ac383e22036a62c53d33561cd73d7cda4b3691fba85e3dcf35229ef7721b324aae291ceb40c
+  languageName: node
+  linkType: hard
+
 "cookie-es@npm:^1.2.2":
   version: 1.2.2
   resolution: "cookie-es@npm:1.2.2"
@@ -1318,6 +1446,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "demo@workspace:."
   dependencies:
+    "@astrojs/netlify": "npm:^6.2.0"
     astro: "npm:^5.3.0"
     astro-qiita-loader: ../
   languageName: unknown
@@ -1337,7 +1466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detect-libc@npm:^2.0.3":
+"detect-libc@npm:^2.0.0, detect-libc@npm:^2.0.3":
   version: 2.0.3
   resolution: "detect-libc@npm:2.0.3"
   checksum: 10c0/88095bda8f90220c95f162bf92cad70bd0e424913e655c20578600e35b91edc261af27531cf160a331e185c0ced93944bc7e09939143225f56312d7fd800fdb7
@@ -1462,7 +1591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.24.2":
+"esbuild@npm:^0.24.0, esbuild@npm:^0.24.2":
   version: 0.24.2
   resolution: "esbuild@npm:0.24.2"
   dependencies:
@@ -1565,7 +1694,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-walker@npm:^2.0.2":
+"estree-walker@npm:2.0.2, estree-walker@npm:^2.0.2":
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
   checksum: 10c0/53a6c54e2019b8c914dc395890153ffdc2322781acf4bd7d1a32d7aedc1710807bdcd866ac133903d5629ec601fbb50abe8c2e5553c7f5a0afdd9b6af6c945af
@@ -1621,6 +1750,13 @@ __metadata:
   dependencies:
     reusify: "npm:^1.0.4"
   checksum: 10c0/d6a001638f1574a696660fcbba5300d017760432372c801632c325ca7c16819604841c92fd3ccadcdacec0966ca336363a5ff57bc5f0be335d8ea7ac6087b98f
+  languageName: node
+  linkType: hard
+
+"file-uri-to-path@npm:1.0.0":
+  version: 1.0.0
+  resolution: "file-uri-to-path@npm:1.0.0"
+  checksum: 10c0/3b545e3a341d322d368e880e1c204ef55f1d45cdea65f7efc6c6ce9e0c4d22d802d5629320eb779d006fe59624ac17b0e848d83cc5af7cd101f206cb704f5519
   languageName: node
   linkType: hard
 
@@ -1728,7 +1864,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7":
+"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7, glob@npm:^10.4.5":
   version: 10.4.5
   resolution: "glob@npm:10.4.5"
   dependencies:
@@ -1744,7 +1880,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.5, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.1.5, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: 10c0/386d011a553e02bc594ac2ca0bd6d9e4c22d7fa8cfbfc448a6d148c59ea881b092db9dbe3547ae4b88e55f1b01f7c4a2ecc53b310c042793e63aa44cf6c257f2
@@ -1936,7 +2072,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^7.0.1":
+"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.5":
   version: 7.0.6
   resolution: "https-proxy-agent@npm:7.0.6"
   dependencies:
@@ -2878,6 +3014,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:^2.6.7":
+  version: 2.7.0
+  resolution: "node-fetch@npm:2.7.0"
+  dependencies:
+    whatwg-url: "npm:^5.0.0"
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 10c0/b55786b6028208e6fbe594ccccc213cab67a72899c9234eb59dba51062a299ea853210fcf526998eaa2867b0963ad72338824450905679ff0fa304b8c5093ae8
+  languageName: node
+  linkType: hard
+
+"node-gyp-build@npm:^4.2.2":
+  version: 4.8.4
+  resolution: "node-gyp-build@npm:4.8.4"
+  bin:
+    node-gyp-build: bin.js
+    node-gyp-build-optional: optional.js
+    node-gyp-build-test: build-test.js
+  checksum: 10c0/444e189907ece2081fe60e75368784f7782cfddb554b60123743dfb89509df89f1f29c03bbfa16b3a3e0be3f48799a4783f487da6203245fa5bed239ba7407e1
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 11.1.0
   resolution: "node-gyp@npm:11.1.0"
@@ -3318,6 +3479,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"resolve-from@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "resolve-from@npm:5.0.0"
+  checksum: 10c0/b21cb7f1fb746de8107b9febab60095187781137fd803e6a59a76d421444b1531b641bba5857f5dc011974d8a5c635d61cec49e6bd3b7fc20e01f0fafc4efbf2
+  languageName: node
+  linkType: hard
+
 "retext-latin@npm:^4.0.0":
   version: 4.0.0
   resolution: "retext-latin@npm:4.0.0"
@@ -3476,7 +3644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5, semver@npm:^7.6.3, semver@npm:^7.7.1":
+"semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.6.3, semver@npm:^7.7.1":
   version: 7.7.1
   resolution: "semver@npm:7.7.1"
   bin:
@@ -3749,7 +3917,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:^7.4.3":
+"tar@npm:^7.4.0, tar@npm:^7.4.3":
   version: 7.4.3
   resolution: "tar@npm:7.4.3"
   dependencies:
@@ -3776,6 +3944,13 @@ __metadata:
   dependencies:
     is-number: "npm:^7.0.0"
   checksum: 10c0/487988b0a19c654ff3e1961b87f471702e708fa8a8dd02a298ef16da7206692e8552a0250e8b3e8759270f62e9d8314616f6da274734d3b558b1fc7b7724e892
+  languageName: node
+  linkType: hard
+
+"tr46@npm:~0.0.3":
+  version: 0.0.3
+  resolution: "tr46@npm:0.0.3"
+  checksum: 10c0/047cb209a6b60c742f05c9d3ace8fa510bff609995c129a37ace03476a9b12db4dbf975e74600830ef0796e18882b2381fb5fb1f6b4f96b832c374de3ab91a11
   languageName: node
   linkType: hard
 
@@ -4034,6 +4209,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"urlpattern-polyfill@npm:8.0.2":
+  version: 8.0.2
+  resolution: "urlpattern-polyfill@npm:8.0.2"
+  checksum: 10c0/5388bbe8459dbd8861ee7cb97904be915dd863a9789c2191c528056f16adad7836ec22762ed002fed44e8995d0f98bdfb75a606466b77233e70d0f61b969aaf9
+  languageName: node
+  linkType: hard
+
 "vfile-location@npm:^5.0.0":
   version: 5.0.3
   resolution: "vfile-location@npm:5.0.3"
@@ -4064,7 +4246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.11":
+"vite@npm:^6.0.11, vite@npm:^6.0.7":
   version: 6.1.1
   resolution: "vite@npm:6.1.1"
   dependencies:
@@ -4132,6 +4314,23 @@ __metadata:
   version: 2.0.1
   resolution: "web-namespaces@npm:2.0.1"
   checksum: 10c0/df245f466ad83bd5cd80bfffc1674c7f64b7b84d1de0e4d2c0934fb0782e0a599164e7197a4bce310ee3342fd61817b8047ff04f076a1ce12dd470584142a4bd
+  languageName: node
+  linkType: hard
+
+"webidl-conversions@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "webidl-conversions@npm:3.0.1"
+  checksum: 10c0/5612d5f3e54760a797052eb4927f0ddc01383550f542ccd33d5238cfd65aeed392a45ad38364970d0a0f4fea32e1f4d231b3d8dac4a3bdd385e5cf802ae097db
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "whatwg-url@npm:5.0.0"
+  dependencies:
+    tr46: "npm:~0.0.3"
+    webidl-conversions: "npm:^3.0.0"
+  checksum: 10c0/1588bed84d10b72d5eec1d0faa0722ba1962f1821e7539c535558fb5398d223b0c50d8acab950b8c488b4ba69043fd833cc2697056b167d8ad46fac3995a55d5
   languageName: node
   linkType: hard
 
