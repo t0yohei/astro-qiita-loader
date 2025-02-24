@@ -1,0 +1,82 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const qiitas: CollectionEntry<"qiitas">[] = await getCollection("qiitas");
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Qiita 記事一覧</title>
+  </head>
+  <body>
+    <h1>Qiita 記事一覧</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>作成日</th>
+          <th>いいね数</th>
+          <th>タグ</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          qiitas.map((qiita) => (
+            <tr>
+              <td>
+                <a href={qiita.data.url} target="_blank" rel="noopener">
+                  {qiita.data.title}
+                </a>
+              </td>
+              <td>
+                {new Date(qiita.data.created_at).toLocaleDateString("ja-JP")}
+              </td>
+              <td>{qiita.data.likes_count}</td>
+              <td>
+                {qiita.data.tags.map((tag) => (
+                  <span class="tag">{tag.name}</span>
+                ))}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f5f5f5;
+      }
+      .tag {
+        display: inline-block;
+        background-color: #e9ecef;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin: 2px;
+        font-size: 0.9em;
+      }
+      a {
+        color: #55c500;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </body>
+</html>
