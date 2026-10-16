@@ -16,15 +16,18 @@ npm install astro-qiita-loader
 
 ## Usage
 
-You can use the `qiitaLoader` in your content configuration at `src/content/config.ts`:
+You can use the `qiitaLoader` in your content configuration at `src/content.config.ts`:
 
 ```ts
+import { defineCollection } from "astro:content";
 import { qiitaLoader } from "astro-qiita-loader";
 
 export const collections = {
-  qiitas: qiitaLoader({
-    url: "https://qiita.com/api/v2/items",
-    authToken: "your_qiita_api_token", // Optional
+  qiitas: defineCollection({
+    loader: qiitaLoader({
+      url: "https://qiita.com/api/v2/items",
+      authToken: "your_qiita_api_token", // Optional
+    }),
   }),
 };
 ```

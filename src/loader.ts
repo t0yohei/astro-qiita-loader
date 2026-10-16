@@ -32,9 +32,9 @@ export const qiitaLoader = (options: {
 
       store.clear();
 
-      const responseJson = await response.json();
+      const responseJson: Item[] = await response.json();
 
-      responseJson.forEach(async (item: Item) => {
+      for (const item of responseJson) {
         const data = await parseData({
           id: item.id,
           data: item,
@@ -50,7 +50,7 @@ export const qiitaLoader = (options: {
           },
           digest,
         });
-      });
+      }
 
       logger.info(`Loaded ${responseJson.length} posts from Qiita`);
     },
