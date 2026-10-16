@@ -62,3 +62,104 @@ test("rejects invalid article data using the loader schema", async () => {
     /created_at/,
   );
 });
+
+async function runSyncSequence(batches) {
+  const directory = await createFixture(items);
+  await writeFile(
+    `${directory}/src/content.config.ts`,
+    `import { writeFile } from "node:fs/promises";
+import { defineCollection } from "astro:content";
+import { qiitaLoader } from "astro-qiita-loader";
+const batches = ${JSON.stringify(batches)};
+const loader = qiitaLoader({ url: "data:application/json,[]" });
+export const collections = {
+  qiitas: defineCollection({
+    loader: {
+      ...loader,
+      async load(context) {
+        const results = [];
+        for (const batch of batches) {
+          const writes = [];
+          const deletes = [];
+          let clears = 0;
+          const store = {
+            ...context.store,
+            set(entry) {
+              const changed = context.store.set(entry);
+              if (changed) writes.push(entry.id);
+              return changed;
+            },
+            delete(id) {
+              deletes.push(id);
+              context.store.delete(id);
+            },
+            clear() {
+              clears++;
+              context.store.clear();
+            },
+          };
+          const url = batch.url ?? "data:application/json," + encodeURIComponent(batch.raw ?? JSON.stringify(batch.items));
+          let error = null;
+          try {
+            await qiitaLoader({ url }).load({ ...context, store });
+          } catch (cause) {
+            error = String(cause);
+          }
+          results.push({ writes, deletes, clears, error, entries: context.store.values() });
+        }
+        await writeFile(${JSON.stringify(`${directory}/results.json`)}, JSON.stringify(results));
+      },
+    },
+  }),
+};`,
+  );
+  await writeFile(`${directory}/src/pages/index.astro`, "<p>Synchronization completed</p>");
+  await build({ root: pathToFileURL(`${directory}/`), logLevel: "silent" });
+  return JSON.parse(await readFile(`${directory}/results.json`, "utf8"));
+}
+
+test("uses digests to skip unchanged entries and reconcile additions and removals", async () => {
+  const first = items[0];
+  const second = { ...first, id: "second-article" };
+  const metadataUpdate = { ...first, likes_count: first.likes_count + 1 };
+  const htmlUpdate = { ...metadataUpdate, rendered_body: "<h2>Updated HTML</h2>" };
+  const added = { ...first, id: "added-article" };
+  const results = await runSyncSequence([
+    { items: [first, second] },
+    { items: [first, second] },
+    { items: [metadataUpdate, second] },
+    { items: [htmlUpdate, second] },
+    { items: [htmlUpdate, added] },
+    { items: [] },
+  ]);
+  assert.ok(results.every((result) => result.error === null && result.clears === 0));
+  assert.deepEqual(results.map((result) => result.writes), [
+    [first.id, second.id], [], [first.id], [first.id], [added.id], [],
+  ]);
+  assert.equal(results[2].entries.find((entry) => entry.id === first.id).data.likes_count, metadataUpdate.likes_count);
+  assert.equal(results[3].entries.find((entry) => entry.id === first.id).rendered.html, htmlUpdate.rendered_body);
+  assert.deepEqual(results[4].deletes, [second.id]);
+  assert.deepEqual(results[4].entries.map((entry) => entry.id).sort(), [added.id, first.id].sort());
+  assert.deepEqual(results[5].deletes.sort(), [added.id, first.id].sort());
+  assert.deepEqual(results[5].entries, []);
+});
+
+test("preserves the previous snapshot when fetching, JSON parsing, or validation fails", async () => {
+  const first = items[0];
+  const second = { ...first, id: "second-article" };
+  const results = await runSyncSequence([
+    { items: [first, second] },
+    { url: "data:broken" },
+    { raw: "{" },
+    { items: { message: "Unexpected response" } },
+    { items: [{ ...first, title: "Must not be stored" }, { ...second, created_at: "invalid-date" }] },
+  ]);
+  assert.equal(results[0].error, null);
+  for (const result of results.slice(1)) {
+    assert.ok(result.error);
+    assert.equal(result.clears, 0);
+    assert.deepEqual(result.writes, []);
+    assert.deepEqual(result.deletes, []);
+    assert.deepEqual(result.entries, results[0].entries);
+  }
+});

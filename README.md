@@ -59,6 +59,12 @@ const qiitas = await getCollection("qiitas");
 - `url`: Qiita API URL. Set the URL of the posts you want to fetch.
 - `authToken`: Qiita API authentication token. Optional: 1000 req/hr with token, 60 req/hr without
 
+## Synchronization
+
+Each load fetches the configured URL and validates all returned entries before updating the collection. Astro uses each entry's digest to skip writes for unchanged entries. Entries absent from the response are removed, including when the response is empty.
+
+If fetching, JSON parsing, or schema validation fails, the load rejects and existing entries remain unchanged. Synchronization covers only the configured URL's response; the loader does not fetch additional pages.
+
 ## Sample
 
 See the [sample](https://github.com/t0yohei/astro-qiita-loader/tree/master/demo) for reference.
