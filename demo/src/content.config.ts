@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { qiitaLoader } from "astro-qiita-loader";
 
 const qiitas = defineCollection({

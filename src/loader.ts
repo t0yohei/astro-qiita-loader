@@ -4,7 +4,7 @@ import { ItemSchema, type Item } from "./schema";
 export const qiitaLoader = (options: {
   url: string;
   authToken?: string;
-}): Loader => {
+}) => {
   const qiitaUrl = new URL(options.url);
   return {
     name: "qiita-loader",
@@ -55,5 +55,5 @@ export const qiitaLoader = (options: {
       logger.info(`Loaded ${responseJson.length} posts from Qiita`);
     },
     schema: ItemSchema,
-  };
+  } satisfies Loader;
 };
