@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        astro: ["5.0.0", "6.0.0", "7.4.0"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24.21.0"
+      - run: corepack enable
+      - run: yarn install --immutable
+      - if: matrix.astro != '7.4.0'
+        run: yarn add --dev astro@${{ matrix.astro }}
+      - run: yarn check
+      - run: yarn test
+
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: demo/.node-version
+      - run: corepack enable
+      - run: yarn install --immutable
+        working-directory: demo
+      - run: yarn build
+        working-directory: demo

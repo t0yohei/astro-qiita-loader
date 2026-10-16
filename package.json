@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Qiita API Loader for Astro",
   "type": "module",
+  "packageManager": "yarn@4.5.3",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs"
+  },
   "exports": {
     ".": "./index.ts"
   },
@@ -23,10 +28,10 @@
   "author": "t0yohei <k.t0yohei@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "astro": "^5.3.0",
+    "astro": "^7.4.0",
     "typescript": "^5.7.3"
   },
   "peerDependencies": {
-    "astro": "^5.0.0"
+    "astro": "^5.0.0 || ^6.0.0 || ^7.0.0"
   }
 }

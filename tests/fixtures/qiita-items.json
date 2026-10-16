@@ -1,0 +1,41 @@
+[
+  {
+    "id": "fixture-article",
+    "title": "Qiita loader compatibility",
+    "body": "# Fixture heading",
+    "rendered_body": "<h2>Fixture heading</h2>",
+    "url": "https://qiita.com/fixture/items/fixture-article",
+    "coediting": false,
+    "comments_count": 0,
+    "created_at": "2026-10-16T00:00:00+09:00",
+    "updated_at": "2026-10-16T00:00:00+09:00",
+    "group": null,
+    "likes_count": 1,
+    "private": false,
+    "reactions_count": 0,
+    "stocks_count": 0,
+    "tags": [{ "name": "Astro", "versions": [] }],
+    "page_views_count": null,
+    "team_membership": null,
+    "organization_url_name": null,
+    "slide": false,
+    "user": {
+      "description": null,
+      "facebook_id": null,
+      "followees_count": 0,
+      "followers_count": 0,
+      "github_login_name": null,
+      "id": "fixture-user",
+      "items_count": 1,
+      "linkedin_id": null,
+      "location": null,
+      "name": "Fixture user",
+      "organization": null,
+      "permanent_id": 1,
+      "profile_image_url": "https://example.com/avatar.png",
+      "team_only": false,
+      "twitter_screen_name": null,
+      "website_url": null
+    }
+  }
+]

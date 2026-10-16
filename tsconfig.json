@@ -1,7 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict",
   "include": ["index.ts", "src/*.ts"],
   "compilerOptions": {
-    "strictNullChecks": true
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
   }
 }

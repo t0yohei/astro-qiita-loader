@@ -6,7 +6,7 @@ This package provides a Qiita loader for Astro, allowing you to use [Qiita posts
 
 ## Requirements
 
-This package requires Astro 5.0.0 or later.
+This package supports Astro 5, 6, and 7. Development and the Astro 7 demo require Node.js 22.22.0 or later.
 
 ## Installation
 
