@@ -30,9 +30,8 @@ export const qiitaLoader = (options: {
         throw new Error(`Failed to fetch items: ${response.statusText}`);
       }
 
-      store.clear();
-
       const responseJson: Item[] = await response.json();
+      const entries = [];
 
       for (const item of responseJson) {
         const data = await parseData({
@@ -42,7 +41,7 @@ export const qiitaLoader = (options: {
 
         const digest = generateDigest(data);
 
-        store.set({
+        entries.push({
           id: data.id,
           data,
           rendered: {
@@ -50,6 +49,16 @@ export const qiitaLoader = (options: {
           },
           digest,
         });
+      }
+
+      const ids = new Set(entries.map((entry) => entry.id));
+      for (const entry of entries) {
+        store.set(entry);
+      }
+      for (const id of store.keys()) {
+        if (!ids.has(id)) {
+          store.delete(id);
+        }
       }
 
       logger.info(`Loaded ${responseJson.length} posts from Qiita`);
