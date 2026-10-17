@@ -1,6 +1,6 @@
 {
   "name": "astro-qiita-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Qiita API Loader for Astro",
   "type": "module",
   "packageManager": "yarn@4.5.3",
