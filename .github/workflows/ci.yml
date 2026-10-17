@@ -24,7 +24,10 @@ jobs:
       - run: yarn install --immutable
       - if: matrix.astro != '7.4.0'
         run: yarn add --dev astro@${{ matrix.astro }}
-      - run: yarn check
+      - if: matrix.astro == '5.0.0'
+        run: yarn check --project tsconfig.build-time.json
+      - if: matrix.astro != '5.0.0'
+        run: yarn check
       - run: yarn test
 
   demo:
