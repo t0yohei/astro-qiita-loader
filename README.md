@@ -6,7 +6,7 @@ This package provides a Qiita loader for Astro, allowing you to use [Qiita posts
 
 ## Requirements
 
-This package supports Astro 5, 6, and 7. Development and the Astro 7 demo require Node.js 22.22.0 or later.
+The build-time `qiitaLoader` supports Astro 5, 6, and 7. The `qiitaLiveLoader` requires Astro 6 or 7. Development and the Astro 7 demo require Node.js 22.22.0 or later.
 
 ## Installation
 
@@ -64,6 +64,50 @@ const qiitas = await getCollection("qiitas");
 Each load fetches the configured URL and validates all returned entries before updating the collection. Astro uses each entry's digest to skip writes for unchanged entries. Entries absent from the response are removed, including when the response is empty.
 
 If fetching, JSON parsing, or schema validation fails, the load rejects and existing entries remain unchanged. Synchronization covers only the configured URL's response; the loader does not fetch additional pages.
+
+## Live collections (Astro 6 and 7)
+
+Use `qiitaLiveLoader` from `astro-qiita-loader/live` to fetch articles at runtime, without rebuilding your site. Define the collection in `src/live.config.ts`:
+
+```ts
+import { defineLiveCollection } from "astro:content";
+import { qiitaLiveLoader } from "astro-qiita-loader/live";
+
+export const collections = {
+  qiitas: defineLiveCollection({
+    loader: qiitaLiveLoader({
+      url: "https://qiita.com/api/v2/users/t0yohei/items",
+      authToken: () => process.env.QIITA_AUTH_TOKEN, // Optional
+    }),
+  }),
+};
+```
+
+Query it from a page rendered on demand:
+
+```astro
+---
+import { getLiveCollection } from "astro:content";
+
+export const prerender = false;
+const { entries: qiitas, error } = await getLiveCollection("qiitas");
+if (error) throw error;
+---
+
+<ul>
+  {qiitas.map((qiita) => (
+    <li><a href={qiita.data.url}>{qiita.data.title}</a></li>
+  ))}
+</ul>
+```
+
+On-demand pages require an Astro server adapter. Keep any page caching policy in your site configuration; the loader does not cache API responses.
+
+`qiitaLiveLoader` accepts a `url` for a Qiita article-list endpoint and an optional `authToken`. The token can be a string or a synchronous function returning a string or `undefined`. The function is called at the start of each load, so it can read runtime credentials.
+
+Each load starts at page 1, requests 100 articles per page, and continues until a page contains fewer than 100 articles. Other URL query parameters are preserved. Each API request has a 10-second timeout. HTTP errors, invalid JSON, and schema validation errors fail the load instead of returning empty or partial results.
+
+Entries use the existing `Item` type, parse dates as `Date` objects, and expose `rendered_body` through Astro's `render()` helper. For a single entry, use `getLiveEntry("qiitas", { id: "article-id" })`; this also fetches the collection's pages before finding the requested entry.
 
 ## Sample
 

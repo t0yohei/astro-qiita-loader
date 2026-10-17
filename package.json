@@ -1,6 +1,6 @@
 {
   "name": "astro-qiita-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Qiita API Loader for Astro",
   "type": "module",
   "packageManager": "yarn@4.5.3",
@@ -9,11 +9,13 @@
     "test": "node --test tests/*.test.mjs"
   },
   "exports": {
-    ".": "./index.ts"
+    ".": "./index.ts",
+    "./live": "./live.ts"
   },
   "files": [
     "src",
-    "index.ts"
+    "index.ts",
+    "live.ts"
   ],
   "keywords": [
     "withastro",
